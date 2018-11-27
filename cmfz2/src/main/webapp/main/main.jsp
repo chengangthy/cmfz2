@@ -21,8 +21,12 @@
                     var str="";
                     var sss="";
                     sss+=data[i].iconcls;
+                    //+'<div data-options="iconCls:\'icon-cut\',"></div>'
                     for(var j=0;j<data[i].menulist.length;j++){
-                        str +="<a style='margin-left: 30px' href='${pageContext.request.contextPath}/main/"+ data[i].menulist[j].url+"' onclick='test()'>"+ data[i].menulist[j].title+" </a>"+"<br/>";
+                        //str +="<a style='margin-left: 30px' href='${pageContext.request.contextPath}/main/"+ data[i].menulist[j].url+"' onclick='test()'>"+data[i].menulist[j].title+"</a>"+"<br/>";
+
+                        str +="<a style='margin-left: 30px' href='javascript:void(0)' onclick='test(\""+data[i].menulist[j].title+"\")'>"+data[i].menulist[j].title+"</a>"+"<br/>";
+
                     }
                 $('#aa').accordion('add', {
                     title:data[i].title,
@@ -42,18 +46,29 @@
                 }
             }
         })
-    function test(){
-        alert("sss")
-    }
-
         /*$('#aa').accordion('add', {
             title: '新标题',
             content: '新内容',
             selected: false
         });*/
-
-
     });
+
+    function test(data){
+        //alert(data)
+        var isExists = $("#tt").tabs("exists",data);
+        if(isExists){
+            //存在
+            $("#tt").tabs("select",data);
+        }else{
+            //不存在
+            $("#tt").tabs("add",{
+                title: data,
+                closable:true,
+                iconCls:"icon-cut",
+                content:'<iframe src="${pageContext.request.contextPath}/main/lunbo.jsp" width="100%" height="100%"></iframe>'
+            });
+        }
+    }
 </script>
 
 </head>
@@ -68,9 +83,10 @@
        
     <div data-options="region:'west',title:'导航菜单',split:true" style="width:220px;">
     	<div id="aa" class="easyui-accordion" data-options="fit:true">
+
 		</div>
 
-    </div>   
+    </div>
     <div data-options="region:'center'">
     	<div id="tt" class="easyui-tabs" data-options="fit:true,narrow:true,pill:true">   
 		    <div title="主页" data-options="iconCls:'icon-neighbourhood',"  style="background-image:url(${pageContext.request.contextPath}/main/image/123.jpg);background-repeat: no-repeat;background-size:100% 100%;"></div>
