@@ -19,22 +19,32 @@
                 //alert(data.list.length)
                 for (var i = 0; i < data.length; i++) {
                     var str="";
+                    var sss="";
+                    sss+=data[i].iconcls;
                     for(var j=0;j<data[i].menulist.length;j++){
                         str +="<a style='margin-left: 30px' href='${pageContext.request.contextPath}/main/"+ data[i].menulist[j].url+"' onclick='test()'>"+ data[i].menulist[j].title+" </a>"+"<br/>";
                     }
                 $('#aa').accordion('add', {
                     title:data[i].title,
                     content:str,
-                    selected: false
+                    selected: false,
+                    iconCls:sss,
+                    //iconCls:"icon-add",
+                   /* tools: [{
+                        iconCls:'icon-add',
+                        handler:function(){alert('new')}
+                    },{
+                        iconCls:'icon-save',
+                        handler:function(){alert('save')}
+                    }]*/
                 });
 
                 }
             }
         })
     function test(){
-
+        alert("sss")
     }
-
 
         /*$('#aa').accordion('add', {
             title: '新标题',
@@ -47,7 +57,7 @@
 </script>
 
 </head>
-<body class="easyui-layout">   
+<body class="easyui-layout">   d
     <div data-options="region:'north',split:true" style="height:60px;background-color:  #5C160C">
     	<div style="font-size: 24px;color: #FAF7F7;font-family: 楷体;font-weight: 900;width: 500px;float:left;padding-left: 20px;padding-top: 10px" >持名法州后台管理系统</div>
     	<div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">欢迎您:${sessionScope.admin.username} &nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a>&nbsp;&nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-01'">退出系统</a></div>

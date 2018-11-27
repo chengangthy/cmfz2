@@ -26,6 +26,7 @@ public class AdminController {
         if(admin!=null&&b){
             session.setAttribute("admin", admin);
             return "main/main";
+            //dasdas
         }
         return "login";
 
