@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace的值是接口的全限定名字 -->
+<mapper namespace="com.baizhi.cmfz.dao.MenuDao">
+	<resultMap id="mapmm" type="Menu">
+		<id column="id" property="id"></id>
+		<result column="title" property="title"></result>
+		<result column="iconcls" property="iconcls"></result>
+		<result column="pid" property="pid"></result>
+		<result column="url" property="url"></result>
+		<collection property="menulist" ofType="Menu">
+			<id column="mid" property="id"></id>
+			<result column="mtitle" property="title"></result>
+			<result column="miconcls" property="iconcls"></result>
+			<result column="mpid" property="pid"></result>
+			<result column="url" property="url"></result>
+		</collection>
+	</resultMap>
+
+
+	<select id="selectMenu1" resultMap="mapmm">
+		select m1.*,m2.id mid,m2.title mtitle,m2.iconcls miconcls,m2.pid mpid,m2.url
+		from menu m1 INNER JOIN menu m2
+		on m1.id=m2.pid
+		ORDER BY m1.id
+	</select>
+</mapper>
