@@ -15,13 +15,13 @@
 			<result column="mtitle" property="title"></result>
 			<result column="miconcls" property="iconcls"></result>
 			<result column="mpid" property="pid"></result>
-			<result column="url" property="url"></result>
+			<result column="murl" property="url"></result>
 		</collection>
 	</resultMap>
 
 
 	<select id="selectMenu1" resultMap="mapmm">
-		select m1.*,m2.id mid,m2.title mtitle,m2.iconcls miconcls,m2.pid mpid,m2.url
+		select m1.*,m2.id mid,m2.title mtitle,m2.iconcls miconcls,m2.pid mpid,m2.url murl
 		from menu m1 INNER JOIN menu m2
 		on m1.id=m2.pid
 		ORDER BY m1.id

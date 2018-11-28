@@ -5,11 +5,23 @@
 <!-- namespace的值是接口的全限定名字 -->
 <mapper namespace="com.baizhi.cmfz.dao.ViewPagerDao">
 
-	<select id="selectView" resultSetType="ViewPager">
+	<select id="selectView" resultType="ViewPager">
 		select * from viewpager limit #{start},#{rows}
 	</select>
 
 	<select id="selectCount" resultType="int">
 		select count(*) from viewpager
 	</select>
+
+	<delete id="deleteView">
+		delete from viewpager where id=#{id}
+	</delete>
+
+	<insert id="insertView">
+		insert into viewpager values(#{id},#{title},#{imgPath},#{desc},#{status},#{date})
+	</insert>
+
+	<update id="updateView">
+		update  viewpager set status=#{status} where id=#{id}
+	</update>
 </mapper>

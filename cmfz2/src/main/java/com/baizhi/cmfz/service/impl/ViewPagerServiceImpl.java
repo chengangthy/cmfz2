@@ -25,8 +25,45 @@ public class ViewPagerServiceImpl implements ViewPagerService {
         int total=viewPagerDao.selectCount();
 
         Map map =new HashMap();
-        map.put("page",list);
-        map.put("rows",total);
+        map.put("rows",list);
+        map.put("total",total);
         return map;
+    }
+
+    @Override
+    public boolean insertView(ViewPager viewPager) {
+
+        try {
+
+            viewPagerDao.insertView(viewPager);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean deleteView(String id) {
+
+        try {
+            viewPagerDao.deleteView(id);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean updateView(ViewPager viewPager) {
+        try {
+            viewPagerDao.updateView(viewPager);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
     }
 }

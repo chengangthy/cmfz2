@@ -4,11 +4,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>持名法州主页</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/themes/IconExtension.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/easyui-lang-zh_CN.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/themes/IconExtension.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/datagrid-detailview.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.edatagrid.js"></script>
 <script type="text/javascript">
 	<!--菜单处理-->
     $(function(){
@@ -24,7 +26,7 @@
                     //+'<div data-options="iconCls:\'icon-cut\',"></div>'
                     for(var j=0;j<data[i].menulist.length;j++){
                         //str +="<a style='margin-left: 30px' href='javascript:void(0)' data-options=\"iconCls:'icon-search'\"  onclick='test(\""+data[i].menulist[j].title+"\",\""+data[i].menulist[j].iconcls+"\")'>"+data[i].menulist[j].title+"</a>"+"<br/>";
-                        str +="<p style='align-content: center'>"+"<a id=\"btn\" href=\"#\" class=\"easyui-linkbutton\" onclick='test(\""+data[i].menulist[j].title+"\",\""+data[i].menulist[j].iconcls+"\")'    data-options=\"iconCls:'icon-search'\">"+data[i].menulist[j].title+"</a>"+"</p>";
+                str +="<p style='align-content: center'>"+"<a id=\"btn\" href=\"#\" class=\"easyui-linkbutton\" onclick='test(\""+data[i].menulist[j].title+"\",\""+data[i].menulist[j].iconcls+"\",\""+data[i].menulist[j].url+"\")'    data-options=\"iconCls:'icon-search'\">"+data[i].menulist[j].title+"</a>"+"</p>";
                     }
                 $('#aa').accordion('add', {
                     title:data[i].title,
@@ -32,26 +34,15 @@
                     selected: false,
                     iconCls:sss,
                     //iconCls:"icon-add",
-                   /* tools: [{
-                        iconCls:'icon-add',
-                        handler:function(){alert('new')}
-                    },{
-                        iconCls:'icon-save',
-                        handler:function(){alert('save')}
-                    }]*/
                 });
 
                 }
             }
         })
-        /*$('#aa').accordion('add', {
-            title: '新标题',
-            content: '新内容',
-            selected: false
-        });*/
     });
 
-    function test(data,data1){
+    function test(data,data1,url){
+        //alert(url)
         //alert(data1)
        var isExists = $("#tt").tabs("exists",data);
         if(isExists){
@@ -63,7 +54,8 @@
                 title: data,
                 closable:true,
                 iconCls:data1,
-                content:'<iframe src="${pageContext.request.contextPath}/main/lunbo.jsp" width="100%" height="100%"></iframe>'
+                //href:"${pageContext.request.contextPath}/main"+url,
+                content:'<iframe src="${pageContext.request.contextPath}/main/'+url+'" width="100%" height="100%"></iframe>'
             });
         }
     }

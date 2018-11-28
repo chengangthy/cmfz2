@@ -1,6 +1,6 @@
 server:
   context-path: /cmfz
-  port: 8989
+  port: 8990
   jsp-servlet:
     init-parameters:
       development: true
@@ -15,6 +15,7 @@ spring:
     view:
       prefix: /
       suffix: .jsp
+    date-format: yyyy-MM-dd HH:mm:ss
   http:
     multipart:
       max-file-size: 1000Mb
