@@ -23,10 +23,8 @@
                     sss+=data[i].iconcls;
                     //+'<div data-options="iconCls:\'icon-cut\',"></div>'
                     for(var j=0;j<data[i].menulist.length;j++){
-                        //str +="<a style='margin-left: 30px' href='${pageContext.request.contextPath}/main/"+ data[i].menulist[j].url+"' onclick='test()'>"+data[i].menulist[j].title+"</a>"+"<br/>";
-
-                        str +="<a style='margin-left: 30px' href='javascript:void(0)' onclick='test(\""+data[i].menulist[j].title+"\")'>"+data[i].menulist[j].title+"</a>"+"<br/>";
-
+                        //str +="<a style='margin-left: 30px' href='javascript:void(0)' data-options=\"iconCls:'icon-search'\"  onclick='test(\""+data[i].menulist[j].title+"\",\""+data[i].menulist[j].iconcls+"\")'>"+data[i].menulist[j].title+"</a>"+"<br/>";
+                        str +="<p style='align-content: center'>"+"<a id=\"btn\" href=\"#\" class=\"easyui-linkbutton\" onclick='test(\""+data[i].menulist[j].title+"\",\""+data[i].menulist[j].iconcls+"\")'    data-options=\"iconCls:'icon-search'\">"+data[i].menulist[j].title+"</a>"+"</p>";
                     }
                 $('#aa').accordion('add', {
                     title:data[i].title,
@@ -53,9 +51,9 @@
         });*/
     });
 
-    function test(data){
-        //alert(data)
-        var isExists = $("#tt").tabs("exists",data);
+    function test(data,data1){
+        //alert(data1)
+       var isExists = $("#tt").tabs("exists",data);
         if(isExists){
             //存在
             $("#tt").tabs("select",data);
@@ -64,7 +62,7 @@
             $("#tt").tabs("add",{
                 title: data,
                 closable:true,
-                iconCls:"icon-cut",
+                iconCls:data1,
                 content:'<iframe src="${pageContext.request.contextPath}/main/lunbo.jsp" width="100%" height="100%"></iframe>'
             });
         }
@@ -72,7 +70,7 @@
 </script>
 
 </head>
-<body class="easyui-layout">   d
+<body class="easyui-layout">
     <div data-options="region:'north',split:true" style="height:60px;background-color:  #5C160C">
     	<div style="font-size: 24px;color: #FAF7F7;font-family: 楷体;font-weight: 900;width: 500px;float:left;padding-left: 20px;padding-top: 10px" >持名法州后台管理系统</div>
     	<div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">欢迎您:${sessionScope.admin.username} &nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a>&nbsp;&nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-01'">退出系统</a></div>
