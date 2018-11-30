@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace的值是接口的全限定名字 -->
+<mapper namespace="com.baizhi.cmfz.dao.AlbumDao">
+	<resultMap id="mms" type="Album">
+		<id column="id" property="id"></id>
+		<result column="title" property="title"></result>
+		<result column="coverimg" property="coverimg"></result>
+		<result column="count" property="count"></result>
+		<result column="score" property="score"></result>
+		<result column="author" property="author"></result>
+		<result column="broadCast" property="broadCast"></result>
+		<result column="brief" property="brief"></result>
+		<result column="publishDate" property="publishDate"></result>
+		<collection property="children" ofType="Section">
+			<id column="sid" property="id"></id>
+			<result column="stitle" property="title"></result>
+			<result column="ssize" property="size"></result>
+			<result column="sduration" property="duration"></result>
+			<result column="sdownpath" property="downpath"></result>
+			<result column="suploadDate" property="uploadDate"></result>
+			<result column="salbumid" property="albumid"></result>
+		</collection>
+	</resultMap>
+
+	<select id="selectAlbum" resultMap="mms">
+		select t.* from(select a1.*,s.id sid,s.size ssize,s.duration sduration,s.downpath sdownpath,s.title stitle,s.uploadDate suploadDate,s.albumid salbumid
+		from album a1 LEFT JOIN section s
+		on a1.id=s.albumid)t LIMIT #{start},#{rows}
+	</select>
+
+	<select id="selectAcount" resultType="int">
+		select count(*) from album
+	</select>
+</mapper>

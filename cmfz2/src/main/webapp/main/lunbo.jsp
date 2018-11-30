@@ -104,7 +104,6 @@
                     pagination:true,
                     fit: true,
                     fitColumns: true,
-                    pagination: true,
                     pageSize: 3,
                     pageList: [3, 6, 9],
                     view: detailview,

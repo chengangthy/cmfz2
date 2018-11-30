@@ -59,4 +59,5 @@ public class ViewPagerController {
     public @ResponseBody boolean updateView(ViewPager viewPager){
         return viewPagerService.updateView(viewPager);
     }
+
 }
