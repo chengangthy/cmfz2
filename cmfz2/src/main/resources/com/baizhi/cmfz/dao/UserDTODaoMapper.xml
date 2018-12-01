@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace的值是接口的全限定名字 -->
+<mapper namespace="com.baizhi.cmfz.dao.UserDaoDTO">
+	<resultMap id="mapp" type="UserDTO">
+		<result column="province" property="name"></result>
+		<result column="count(*)" property="value"></result>
+	</resultMap>
+
+	<select id="selectMan" resultMap="mapp">
+		select count(*),province FROM user where sex='男' GROUP BY province
+	</select>
+
+	<select id="selectWoMan" resultMap="mapp">
+		select count(*),province FROM user where sex='女' GROUP BY province
+	</select>
+</mapper>

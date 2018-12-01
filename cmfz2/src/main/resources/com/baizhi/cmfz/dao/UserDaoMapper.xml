@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace的值是接口的全限定名字 -->
+<mapper namespace="com.baizhi.cmfz.dao.UserDao">
+	
+	<select id="selectCount1" resultType="int">
+		SELECT count(*) from user WHERE datediff(SYSDATE(),date)&lt;7
+	</select>
+
+	<select id="selectCount2" resultType="int">
+		SELECT count(*) from user WHERE datediff(SYSDATE(),date)&lt;14
+	</select>
+
+	<select id="selectCount3" resultType="int">
+		SELECT count(*) from user WHERE datediff(SYSDATE(),date)&lt;21
+	</select>
+
+</mapper>

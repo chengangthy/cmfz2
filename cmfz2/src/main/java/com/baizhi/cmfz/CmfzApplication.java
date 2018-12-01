@@ -13,7 +13,6 @@ import java.util.Properties;
 @MapperScan(value = "com.baizhi.cmfz.dao")
 @SpringBootApplication
 public class CmfzApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(CmfzApplication.class, args);
     }

@@ -11,6 +11,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/datagrid-detailview.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.edatagrid.js"></script>
+    <script src="${pageContext.request.contextPath}/js/echarts.min.js"></script>
 <script type="text/javascript">
 	<!--菜单处理-->
     $(function(){
@@ -18,14 +19,11 @@
             url:"main/selectMenu1.action",
             type:"post",
             success:function(data) {
-                //alert(data.list.length)
                 for (var i = 0; i < data.length; i++) {
                     var str="";
                     var sss="";
                     sss+=data[i].iconcls;
-                    //+'<div data-options="iconCls:\'icon-cut\',"></div>'
                     for(var j=0;j<data[i].menulist.length;j++){
-                        //str +="<a style='margin-left: 30px' href='javascript:void(0)' data-options=\"iconCls:'icon-search'\"  onclick='test(\""+data[i].menulist[j].title+"\",\""+data[i].menulist[j].iconcls+"\")'>"+data[i].menulist[j].title+"</a>"+"<br/>";
                 str +="<p style='align-content: center'>"+"<a id=\"btn\" href=\"#\" class=\"easyui-linkbutton\" onclick='test(\""+data[i].menulist[j].title+"\",\""+data[i].menulist[j].iconcls+"\",\""+data[i].menulist[j].url+"\")'    data-options=\"iconCls:'icon-search'\">"+data[i].menulist[j].title+"</a>"+"</p>";
                     }
                 $('#aa').accordion('add', {

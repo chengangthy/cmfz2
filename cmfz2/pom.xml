@@ -25,16 +25,20 @@
     </properties>
 
     <dependencies>
+        <!--web支持-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!--内置tomcat-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!--测试-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -47,32 +51,35 @@
             <version>1.0.0</version>
         </dependency>
 
-
+        <!--数据源-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.0.19</version>
         </dependency>
 
+        <!--mysqljar-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.38</version>
         </dependency>
 
+        <!--mybatis-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>3.2.8</version>
         </dependency>
 
+        <!--阿里的验证码-->
         <dependency>
             <groupId>com.baizhi</groupId>
             <artifactId>xinpaimai</artifactId>
             <version>1.0.0</version>
         </dependency>
 
-
+        <!--阿里的验证码依赖-->
         <dependency>
             <groupId>com.baizhi</groupId>
             <artifactId>xinpaimai1</artifactId>
@@ -85,18 +92,21 @@
             <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
 
+        <!--jstl标签-->
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
 
+        <!--fastjson-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.33</version>
         </dependency>
 
+        <!--lombok-->
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -119,7 +129,7 @@
             <artifactId>commons-fileupload</artifactId>
             <version>1.3.1</version>
         </dependency>
-
+        <!-- 上传组件包io -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -127,6 +137,13 @@
         </dependency>
 
 
+        <!--通用mapper-->
+        <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
+        <!--<dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>2.1.0</version>
+        </dependency>-->
     </dependencies>
 
     <build>

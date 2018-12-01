@@ -52,7 +52,7 @@
                     if(zj.author!=null){
                         $("#insertzhangjie").dialog("open")
                         $("#insin3").val(zj.id);
-                        alert($("#insin3").val());
+                        //alert($("#insin3").val());
                     }else{
                         alert("选错了")
                     }
@@ -87,7 +87,7 @@
             $('#zhuanji').treegrid({
                 onDblClickRow: function (row) {
                     $("#ssqsq").dialog("open")
-                    alert("aa")
+                   // alert("aa")
                     $("#audio_id").prop("src","${pageContext.request.contextPath}/upload/"+row.downpath)
                 },
                 url:'selectAlbum',
@@ -97,8 +97,10 @@
                 treeField:'title',
                 fit: true,
                 fitColumns: true,
-                /*pageSize: 3,
-                pageList: [3, 6, 9],*/
+                lines:true,
+                animate:true,
+                pageSize: 15,
+                pageList: [5, 15, 20],
                 columns:[[
                     {field:'title',title:'名称',width:80},
                     {field:'downpath',title:'下载路径',width:60,align:'right'},
@@ -126,7 +128,7 @@
 
         //添加章节
         function insertzhangjie(){
-            alert($("#insin3").val());
+            //alert($("#insin3").val());
             $('#insertformzhangjie').form("submit", {
                 url:"insertSection",
                 success:function(data){
