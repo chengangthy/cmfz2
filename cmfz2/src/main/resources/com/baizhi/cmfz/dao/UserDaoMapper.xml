@@ -17,4 +17,17 @@
 		SELECT count(*) from user WHERE datediff(SYSDATE(),date)&lt;21
 	</select>
 
+
+	<select id="selectUserCount" resultType="int">
+		select count(*) from user
+	</select>
+
+	<select id="selectUser" resultType="User">
+		select * from user limit #{start},#{rows}
+	</select>
+
+
+	<select id="selectExcel" resultType="User">
+		select * from user
+	</select>
 </mapper>

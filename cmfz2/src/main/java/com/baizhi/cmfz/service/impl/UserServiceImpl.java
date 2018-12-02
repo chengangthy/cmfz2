@@ -1,12 +1,14 @@
 package com.baizhi.cmfz.service.impl;
 
 import com.baizhi.cmfz.dao.UserDao;
+import com.baizhi.cmfz.entity.User;
 import com.baizhi.cmfz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service("userService")
@@ -45,5 +47,22 @@ public class UserServiceImpl implements UserService {
         String[] ply={"一周","两周","三周"};
         map.put("ply",ply);
         return map;
+    }
+
+    @Override
+    public Map selectUser(int page,int rows) {
+
+        int start=(page-1)*rows;
+        List<User> list=userDao.selectUser(start,rows);
+        int count=userDao.selectUserCount();
+        Map map =new HashMap();
+        map.put("total",count);
+        map.put("rows",list);
+        return map;
+    }
+
+    @Override
+    public List<User> selectExcel() {
+        return userDao.selectExcel();
     }
 }
